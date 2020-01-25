@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Poc knockout</title>
+
+    <base href="C:/desenv/projetos/poc-knockout/">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar-top.css" rel="stylesheet">
+    <link href="css/livro.css" rel="stylesheet">
+    <link href="css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Livros</h1>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" data-bind="click: add">
+                    <span class="glyphicon glyphicon-plus"></span> Adicionar Livro
+                </button>
+                <button type="button" class="btn btn-success" data-bind="click: save">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Salvar Alterações
+                </button>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nome Livro</th>
+                        <th>Autor</th>
+                        <th>Qtd Paginas</th>
+                        <th class="actions">Ações</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: customers">
+                    <tr data-bind="click: $root.setSelected.bind($root, $data)">
+                        <td>
+                            <div data-bind="text: $data.name, visible: !$data.edit()"></div>
+                            <input data-bind="value: $data.name, visible: $data.edit" />
+                        </td>
+                        <td>
+                            <div data-bind="text: $data.emailAddress, visible: !$data.edit()"></div>
+                            <input data-bind="value: $data.emailAddress, visible: $data.edit" type="email" required />
+                        </td>
+                        <td>
+                            <div data-bind="text: $data.age, visible: !$data.edit()"></div>
+                            <input data-bind="value: $data.age, visible: $data.edit" type="number" />
+                        </td>
+                        <td>
+                            <span class="glyphicon glyphicon-edit" title="Edit" data-bind="click: $root.toggleEdit.bind($root, $data, true)"></span>
+                            <span class="glyphicon glyphicon-ok" title="Save" data-bind="visible: $data.edit, click: $root.toggleEdit.bind($root, $data, false)"></span>
+                            <span class="glyphicon glyphicon-remove" title="Delete" data-bind="click: $root.delete.bind($root, $index)"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="panel panel-info" data-bind="with: $root.selected">
+                <div class="panel-heading">
+                    <h3 class="panel-title" data-bind="text: 'Bio for ' + name()"></h3>
+                </div>
+                <div class="panel-body" data-bind="html: bio, visible: !edit()"></div>
+                <textarea class="form-control" rows="5" data-bind="textInput: bio, visible: edit"></textarea>
+            </div>
+            <service-credits params="{'customer': $root.selected()}"></service-credits>
+        </div>
+        <template id='service-credits-template'>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-info">
+                    <span data-bind="text: 'Service Credits for ' + customer().name()"></span>
+                    <span class="glyphicon glyphicon-plus pull-right" title="Add Service" data-bind="click: addService"></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="badge" data-bind="text: credit, visible: !edit(), click: startEdit"></span>
+                    <input data-bind="value: credit, visible: edit, click: startEdit, event: {blur: stopEdit}" class="badge-edit"
+                        type="number" />
+                    <span data-bind="text: name, visible: !edit(), click: startEdit"></span>
+                    <select data-bind="options: $parent.serviceNames,
+                                    visible: edit, value: name, 
+                                    click: startEdit, event: {blur: stopEdit}">
+
+                    </select>
+                </li>
+            </ul>
+        </template>
+
+        </div>
+    </main>
+
+    <script src="libs/jquery-3.3.1.slim.min.js"></script>
+    <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script type='text/javascript' src='libs/knockout-3.5.1.js'></script>
+    <script type='text/javascript' src='libs/knockout.mapping.js'></script>
+    <script type='text/javascript' src='src/component/livro/livro.js'></script>
+    <script type='text/javascript' src='libs/toastr.min.js'></script>
+</body>
+
+</html>
+
+
+</html>

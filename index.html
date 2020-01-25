@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Poc knockout</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/navbar-top.css" rel="stylesheet">
+    <link href="css/livro.css" rel="stylesheet">
+    <link href="css/toastr.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h1>Templates</h1>
+
+            <lista-livro data-bind="visible: exibirLista" params="{'nomePagina':'Lista de Livros', 'lista':$root.livros}"></lista-livro>
+            <cadastro-livro data-bind="visible: exibirCadastro" params="{'nomePagina':'Novo Livro'}"></cadastro-livro>
+            <cadastro-livro data-bind="visible: exibirCadastro" params="{'nomePagina':'Edição Livro'}"></cadastro-livro>
+            <detalhar-livro data-bind="visible: exibirDetalhar" params="{'nomePagina':'Detalhar Livro'}"></detalhar-livro>
+
+
+        </div>
+    </main>
+
+
+    <template id='lista-livros-template'>
+        <h2 data-bind="text: parametros.nomePagina"></h2>
+        <h2 data-bind="text: $root.subtitulo"></h2>
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome Livro</th>
+                    <th>Autor</th>
+                    <th class="actions">Ações</th>
+                </tr>
+            </thead>
+            <!-- <tbody data-bind="foreach: parametros.lista"> -->
+            <tbody data-bind="foreach: $root.livros">
+                <tr data-bind="click: $root.detalhar.bind($data)">
+                    <td data-bind="text: $data.nome"></td>
+                    <td data-bind="text: $data.autor"></td>
+                    <td data-bind="text: $data.nome"></td>
+                </tr>
+        </table>
+    </template>
+
+    <template id='livro-template'>
+        <h2 data-bind="text: parametros.nomePagina"></h2>
+    </template>
+
+    <template id='detalhar-livro-template'>
+        <h2 data-bind="text: parametros.nomePagina"></h2>
+        <h3 data-bind="text: $root.livroSelecionado.nome"></h3>
+    </template>
+
+    <script src="libs/jquery-3.3.1.slim.min.js"></script>
+    <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
+    <script src="libs/popper.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script type='text/javascript' src='libs/knockout-3.5.1.js'></script>
+    <script type='text/javascript' src='libs/knockout.mapping.js'></script>
+    <script type='text/javascript' src='index.js'></script>
+    <script type='text/javascript' src='libs/toastr.min.js'></script>
+
+</body>
+
+</html>
+
+
+</html>
