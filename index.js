@@ -17,7 +17,7 @@ function IndexViewModel() {
     self.exibirLista = ko.observable(true);
     self.exibirCadastro = ko.observable(true);
     self.subtitulo = 'Listagem de livros';
-    self.livroSelecionado = ko.mapping.fromJS({nome:"abc"});
+    self.livro = ko.observable({nome:'nome e'});
 
     function init() {
         self.livros = [
@@ -28,7 +28,7 @@ function IndexViewModel() {
     };
 
     self.detalhar = (livro) => {
-        self.livroSelecionado = ko.observable(livro);
+        self.livro = (livro);
         console.log(livro);
         self.exibirDetalhar(true);
         self.exibirLista(false);

@@ -1,3 +1,15 @@
+exports.obterLivros = (req,res) =>{
+    res.status(200).send(
+        data = [
+            { nome: "nome a", autor: "autor a" },
+            { nome: "nome b", autor: "autor b" },
+            { nome: "nome c", autor: "autor c" },
+            { nome: "nome d", autor: "autor d" }
+        ]
+    );
+}
+
+
 exports.get = (req, res, next) => {
     res.status(200).send('Requisição recebida com sucesso!');
 };
