@@ -19,7 +19,7 @@
             <lista-livro data-bind="visible: exibirLista" params="{'nomePagina':'Lista de Livros', 'lista': $root.livros}"></lista-livro>
             <cadastro-livro data-bind="visible: exibirCadastro" params="{'nomePagina':'Novo Livro'}"></cadastro-livro>
             <cadastro-livro data-bind="visible: exibirCadastro" params="{'nomePagina':'Edição Livro'}"></cadastro-livro>
-            <detalhar-livro data-bind="visible: exibirDetalhar" params="{'nomePagina':'Detalhar Livro', 'livro':$root.livro()}"></detalhar-livro>
+            <detalhar-livro data-bind="visible: exibirDetalhar" params="{'livro':$root.livro()}"></detalhar-livro>
         </div>
     </main>
     <template id='lista-livros-template'>
@@ -49,15 +49,14 @@
 
     <template id='detalhar-livro-template'>
         <h2 data-bind="text: parametros.nomePagina"></h2>
-        <h3 data-bind="value: parametros.livro.nome"></h3>
+        <h3 data-bind="text: parametros.livro().nome"></h3>
     </template>
 
     <script src="libs/jquery-3.3.1.slim.min.js"></script>
     <script>window.jQuery || document.write('<script src="libs/jquery-slim.min.js"><\/script>')</script>
-    <script src="libs/popper.min.js"></script>
+    <!-- <script src="libs/popper.min.js"></script> -->
     <script src="libs/bootstrap.min.js"></script>
     <script type='text/javascript' src='libs/knockout-3.5.1.js'></script>
-    <script type='text/javascript' src='libs/knockout.mapping.js'></script>
     <script type='text/javascript' src='index.js'></script>
     <script type='text/javascript' src='libs/toastr.min.js'></script>
 

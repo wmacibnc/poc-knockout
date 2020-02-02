@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "4.17.1",
     "html-includes": "4.2.0",
+    "knockout": "^3.5.1",
     "requirejs": "^2.3.6"
   },
   "devDependencies": {

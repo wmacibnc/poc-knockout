@@ -17,14 +17,16 @@ function IndexViewModel() {
     self.exibirLista = ko.observable(true);
     self.exibirCadastro = ko.observable(true);
     self.subtitulo = 'Listagem de livros';
-    self.livro = ko.observable({nome:'nome e'});
+    self.livro = ko.observable(false);
+
 
     function init() {
         self.livros = [
             { nome: "nome a", autor: "autor a" },
             { nome: "nome b", autor: "autor b" },
             { nome: "nome c", autor: "autor c" },
-            { nome: "nome d", autor: "autor d" }];
+            { nome: "nome d", autor: "autor d" }
+        ];
     };
 
     self.detalhar = (livro) => {

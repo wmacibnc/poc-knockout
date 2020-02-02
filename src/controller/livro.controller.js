@@ -1,11 +1,24 @@
 exports.obterLivros = (req,res) =>{
+    const lista = [
+        { id: 1, nome: "nome a", autor: "autor a" },
+        { id: 2, nome: "nome b", autor: "autor b" },
+        { id: 3, nome: "nome c", autor: "autor c" },
+        { id: 4, nome: "nome d", autor: "autor d" }
+    ];
+
+    const id = req.params.id;
+    console.log("id: " + id)
+    let data = null;
+    if(id){
+        console.log("entrou ")
+        data = lista.find(e=> e. id== id);
+        console.log("data: " + data)
+    }else{
+        data = lista;
+    }
+
     res.status(200).send(
-        data = [
-            { nome: "nome a", autor: "autor a" },
-            { nome: "nome b", autor: "autor b" },
-            { nome: "nome c", autor: "autor c" },
-            { nome: "nome d", autor: "autor d" }
-        ]
+        data = data
     );
 }
 
